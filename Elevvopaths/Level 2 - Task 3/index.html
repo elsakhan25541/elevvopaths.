@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TaskFlow - Organize Your Life</title>
+  <style>
+    :root {
+      --primary: #004030;       /* Dark Teal Base */
+      --secondary: #004030;     /* Keeping consistent background */
+      --accent: #4A9782;        /* Jade Green Accent */
+      --light: #ffffff;
+      --bg-dark: rgba(255, 255, 255, 0.07);
+      --bg-soft: rgba(0, 0, 0, 0.07);
+      --text-light: #f1f1f1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--text-light);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    h1, h2, h3 {
+      margin-bottom: 1rem;
+    }
+
+    header {
+      text-align: center;
+      padding: 100px 20px 80px;
+      background: var(--bg-soft);
+    }
+
+    header h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+    }
+
+    header p {
+      font-size: 1.25rem;
+      margin-top: 10px;
+      color: #dfe6e9;
+    }
+
+    .cta-button {
+      margin-top: 30px;
+      padding: 14px 30px;
+      font-size: 1rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: #3b7f6d;
+      transform: translateY(-2px);
+    }
+
+    section {
+      padding: 80px 20px;
+      text-align: center;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.7s ease-out;
+    }
+
+    section.reveal-active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 1100px;
+      margin: 40px auto 0;
+    }
+
+    .card {
+      background-color: var(--bg-dark);
+      padding: 30px;
+      border-radius: 15px;
+      backdrop-filter: blur(8px);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .icon {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-size: 2rem;
+      font-weight: bold;
+      margin: 15px 0;
+      color: var(--accent);
+    }
+
+    .card ul {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+
+    .card ul li {
+      margin-bottom: 10px;
+    }
+
+    .card button {
+      margin-top: 15px;
+      background-color: var(--accent);
+      color: #fff;
+      padding: 10px 20px;
+      font-weight: bold;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .card button:hover {
+      background-color: #3b7f6d;
+    }
+
+    footer {
+      background-color: rgba(0, 0, 0, 0.2);
+      padding: 40px 20px;
+      color: #dcdde1;
+      text-align: center;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 20px;
+      max-width: 1000px;
+      margin: auto;
+      align-items: center;
+    }
+
+    .contact-info {
+      font-size: 0.95rem;
+    }
+
+    .social-icons {
+      font-size: 1.5rem;
+    }
+
+    .social-icons a {
+      margin: 0 10px;
+      text-decoration: none;
+      color: var(--accent);
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.4rem;
+      }
+      .cta-button {
+        width: 100%;
+        max-width: 300px;
+      }
+      .footer-grid {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header>
+    <h1>TaskFlow</h1>
+    <p>Organize. Prioritize. Conquer your day, effortlessly.</p>
+    <button class="cta-button">Get Started</button>
+  </header>
+
+  <!-- Features -->
+  <section class="reveal">
+    <h2>Why Choose TaskFlow?</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">✅</div>
+        <h3>Smart Task Management</h3>
+        <p>Create, edit, and complete tasks with just a few taps.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📅</div>
+        <h3>Daily Planning</h3>
+        <p>Visualize your day and stay ahead with integrated schedules.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📈</div>
+        <h3>Insights</h3>
+        <p>Get productivity stats to improve your workflow weekly.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews -->
+  <section class="reveal">
+    <h2>What Users Say</h2>
+    <div class="grid">
+      <div class="card">
+        <p>"TaskFlow keeps me sane during busy weeks! Everything is in one place."</p>
+        <p><strong>– Ayesha N.</strong></p>
+      </div>
+      <div class="card">
+        <p>"I've tried every planner app. This one actually sticks."</p>
+        <p><strong>– Omar K.</strong></p>
+      </div>
+      <div class="card">
+        <p>"My productivity doubled after switching to TaskFlow. Love it!"</p>
+        <p><strong>– Sana R.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="reveal">
+    <h2>Choose Your Plan</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Free</h3>
+        <div class="price">$0/mo</div>
+        <ul>
+          <li>10 Tasks</li>
+          <li>Email Reminders</li>
+          <li>Basic Dashboard</li>
+        </ul>
+        <button>Start Free</button>
+      </div>
+      <div class="card">
+        <h3>Pro</h3>
+        <div class="price">$9.99/mo</div>
+        <ul>
+          <li>Unlimited Tasks</li>
+          <li>Priority Support</li>
+          <li>Full Insights</li>
+        </ul>
+        <button>Upgrade</button>
+      </div>
+      <div class="card">
+        <h3>Team</h3>
+        <div class="price">$29.99/mo</div>
+        <ul>
+          <li>Team Sharing</li>
+          <li>Collab Boards</li>
+          <li>Admin Controls</li>
+        </ul>
+        <button>Get Team Plan</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="contact-info">
+        Contact us: <a href="mailto:support@taskflow.app">support@taskflow.app</a><br/>
+        Phone: +1-800-TASKFLOW
+      </div>
+      <div class="social-icons">
+        <a href="#">📘</a>
+        <a href="#">🐦</a>
+        <a href="#">💼</a>
+        <a href="#">📸</a>
+      </div>
+    </div>
+    <p style="margin-top: 20px;">&copy; 2025 TaskFlow. All rights reserved.</p>
+  </footer>
+
+  <!-- Scroll Animation JS -->
+  <script>
+    const sections = document.querySelectorAll('.reveal');
+    const onScroll = () => {
+      const triggerBottom = window.innerHeight * 0.85;
+      sections.forEach(sec => {
+        const top = sec.getBoundingClientRect().top;
+        if (top < triggerBottom) {
+          sec.classList.add('reveal-active');
+        }
+      });
+    };
+    window.addEventListener('scroll', onScroll);
+    window.addEventListener('load', onScroll);
+  </script>
+
+</body>
+</html>

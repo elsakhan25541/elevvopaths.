@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sidebar</title>
+  <style>
+    :root {
+      --blue: #00203F;
+      --mint: #ADEFD1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      background-color: var(--mint);
+      color: var(--blue);
+    }
+
+    .toggle-button {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 1100;
+      background-color: var(--blue);
+      color: var(--mint);
+      border: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 18px;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 250px;
+      background-color: var(--blue);
+      color: var(--mint);
+      padding-top: 80px;
+      padding-left: 20px;
+      padding-right: 20px;
+      transition: transform 0.3s ease-in-out;
+      z-index: 1000;
+    }
+
+    .sidebar.hidden {
+      transform: translateX(-100%);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin-bottom: 40px;
+      color: var(--mint);
+    }
+
+    .sidebar ul {
+      list-style: none;
+    }
+
+    .sidebar li {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .sidebar li:hover {
+      background-color: var(--mint);
+      color: var(--blue);
+    }
+
+    .sidebar i {
+      font-size: 18px;
+    }
+
+    .sidebar span {
+      white-space: nowrap;
+    }
+
+    .overlay {
+      display: none;
+    }
+
+    .overlay.active {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 900;
+    }
+
+    .content {
+      margin-left: 250px;
+      padding: 60px 40px;
+      transition: margin-left 0.3s ease;
+      background-color: var(--mint);
+      min-height: 100vh;
+    }
+
+    @media (max-width: 1024px) {
+      .sidebar {
+        transform: translateX(-100%);
+      }
+
+      .sidebar.active {
+        transform: translateX(0%);
+      }
+
+      .content {
+        margin-left: 0;
+        padding: 80px 20px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .toggle-button {
+        padding: 8px 12px;
+        font-size: 16px;
+      }
+
+      .sidebar li {
+        padding: 10px;
+        font-size: 15px;
+      }
+
+      .logo {
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Toggle Button -->
+  <button class="toggle-button" onclick="toggleSidebar()">☰</button>
+
+  <!-- Sidebar -->
+  <div class="sidebar hidden" id="sidebar">
+    <div class="logo"> 🔷 Triple Threats </div>
+    
+
+    <ul>
+      <li><i>🏠</i><span>Home</span></li>
+      <li><i>📁</i><span>Projects</span></li>
+      <li><i>📧</i><span>Inbox</span></li>
+      <li><i>⚙️</i><span>Settings</span></li>
+      <li><i>🚪</i><span>Logout</span></li>
+    </ul>
+  </div>
+
+  <!-- Overlay -->
+  <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Welcome to Triple Threats! </h1>
+    <p>Click the ☰ menu to open the sidebar.</p>
+  </div>
+
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+
+      sidebar.classList.toggle("active");
+      sidebar.classList.toggle("hidden");
+      overlay.classList.toggle("active");
+    }
+  </script>
+</body>
+</html>

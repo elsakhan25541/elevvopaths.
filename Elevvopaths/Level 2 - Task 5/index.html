@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NeuraTech – The Future of AI</title>
+  <style>
+    :root {
+      --bg: #ffe4f0;
+      --text: #3d2c3e;
+      --primary: #d946ef;
+      --accent: #9333ea;
+      --card-bg: #fff0f6;
+      --section-bg: #ffeaf4;
+      --footer-bg: #fce7f3;
+      --footer-text: #6b21a8;
+      --shadow: rgba(0, 0, 0, 0.05);
+    }
+
+    body.dark-mode {
+      --bg: #2e003e;
+      --text: #fdf2f8;
+      --primary: #f472b6;
+      --accent: #f9a8d4;
+      --card-bg: #3b0a4f;
+      --section-bg: #4a044e;
+      --footer-bg: #1e002a;
+      --footer-text: #fbcfe8;
+      --shadow: rgba(0, 0, 0, 0.3);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: background 0.3s, color 0.3s;
+      line-height: 1.6;
+    }
+
+    header, section, footer {
+      padding: 2rem;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--section-bg);
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 8px var(--shadow);
+    }
+
+    .navbar h1 {
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 4rem 2rem;
+      background: var(--section-bg);
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border: none;
+      border-radius: 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent);
+    }
+
+    .features, .testimonials, .pricing {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      background: var(--section-bg);
+      padding: 4rem 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px var(--shadow);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card i {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--primary);
+    }
+
+    .pricing .card {
+      border: 2px solid var(--primary);
+    }
+
+    .cta {
+      text-align: center;
+      background: var(--primary);
+      color: white;
+      padding: 4rem 2rem;
+    }
+
+    .cta h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .footer {
+      text-align: center;
+      background: var(--footer-bg);
+      padding: 2rem;
+      color: var(--footer-text);
+    }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 50px;
+      height: 24px;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0;
+      right: 0; bottom: 0;
+      background-color: #ccc;
+      transition: 0.4s;
+      border-radius: 24px;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: white;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+
+    input:checked + .slider {
+      background-color: var(--accent);
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(26px);
+    }
+
+    @media (max-width: 768px) {
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <h1>NeuraTech</h1>
+    <label class="switch">
+      <input type="checkbox" id="theme-toggle">
+      <span class="slider"></span>
+    </label>
+  </nav>
+
+  <header class="hero">
+    <h2>Unlock the Power of AI</h2>
+    <p>NeuraTech is your all-in-one AI platform designed to simplify data, automate processes, and empower decision-making in real-time.</p>
+    <button class="btn-primary">Request a Demo</button>
+  </header>
+
+  <section class="features">
+    <h2>Features: </h2>
+    <div class="card">
+      <i>🧠</i>
+      <h3>AI Engine</h3>
+      <p>Leverage deep learning models for accurate predictions, NLP, and automation with no-code workflows.</p>
+    </div>
+    <div class="card">
+      <i>📡</i>
+      <h3>Real-time Data</h3>
+      <p>Stream and analyze data instantly from multiple sources to stay ahead with real-time intelligence.</p>
+    </div>
+    <div class="card">
+      <i>🔐</i>
+      <h3>Secure Cloud</h3>
+      <p>Enterprise-grade encryption and privacy-first infrastructure hosted on globally distributed nodes.</p>
+    </div>
+  </section>
+
+  <section class="testimonials">
+    <h2>Testimonials:</h2>
+    <div class="card">
+      <p>"NeuraTech transformed our data pipeline and decision-making. A true force multiplier."</p>
+      <strong>- Alex R., CTO</strong>
+    </div>
+    <div class="card">
+      <p>"We deployed AI models in hours, not weeks. It's a must-have for any tech-driven team."</p>
+      <strong>- Priya K., Product Manager</strong>
+    </div>
+    <div class="card">
+      <p>"Their support and innovation are unmatched. NeuraTech is the future."</p>
+      <strong>- Leo G., AI Engineer</strong>
+    </div>
+  </section>
+
+  <section class="pricing">
+    <h2>Pricing Details:</h2>
+    <div class="card">
+      <h3>Starter</h3>
+      <p>$0/month</p>
+      <p>Access basic models and 1 integration</p>
+      <button class="btn-primary">Start Free</button>
+    </div>
+    <div class="card">
+      <h3>Pro</h3>
+      <p>$49/month</p>
+      <p>Advanced features, model training, and analytics</p>
+      <button class="btn-primary">Upgrade</button>
+    </div>
+    <div class="card">
+      <h3>Enterprise</h3>
+      <p>Custom</p>
+      <p>Dedicated infra, APIs, and 24/7 support</p>
+      <button class="btn-primary">Contact Sales</button>
+    </div>
+  </section>
+
+  <section class="cta">
+    <h2>Start building smarter with NeuraTech</h2>
+    <p>Join thousands of developers, analysts, and businesses using our AI platform.</p>
+    <button class="btn-primary">Get Started Now</button>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 NeuraTech. Powered by Intelligence 💡</p>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      toggle.checked = true;
+    }
+
+    toggle.addEventListener('change', () => {
+      body.classList.toggle('dark-mode');
+      localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>

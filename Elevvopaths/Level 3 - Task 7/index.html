@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Dashboard</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(to top, #a8dadc, #f1faee);
+      color: #1d3557;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    .search {
+      margin-bottom: 20px;
+    }
+
+    .search input {
+      padding: 10px;
+      border: 1px solid #457b9d;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    .weather-card, .forecast-card {
+      background: #ffffffcc;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      width: 260px;
+    }
+
+    .weather-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .weather-card img, .forecast-card img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .loading {
+      font-size: 18px;
+      margin-top: 20px;
+      color: #e76f51;
+    }
+  </style>
+</head>
+<body>
+  <h1> 🌤️ Weather Dashboard</h1>
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="Enter city name..." />
+  </div>
+  <div id="loading" class="loading" style="display: none;">Loading...</div>
+  <div id="weatherContainer" class="weather-info"></div>
+
+  <script>
+    const API_KEY = "50dfb02edd816567f99e662e3ea24d6e"; 
+    const searchInput = document.getElementById("searchInput");
+    const weatherContainer = document.getElementById("weatherContainer");
+    const loading = document.getElementById("loading");
+
+    async function fetchWeather(city) {
+      loading.style.display = "block";
+      weatherContainer.innerHTML = "";
+      try {
+        const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
+        const data = await res.json();
+        if (data.cod !== 200) throw new Error(data.message);
+        showWeather(data);
+      } catch (err) {
+        weatherContainer.innerHTML = `<p style='color:red;'>Error: ${err.message}</p>`;
+      } finally {
+        loading.style.display = "none";
+      }
+    }
+
+    function showWeather(data) {
+      const icon = data.weather[0].icon;
+      const html = `
+        <div class="weather-card">
+          <h2>${data.name}, ${data.sys.country}</h2>
+          <img src="https://openweathermap.org/img/wn/${icon}@2x.png" alt="Weather icon" />
+          <p><strong>${data.weather[0].description}</strong></p>
+          <p>Temperature: ${data.main.temp}&deg;C</p>
+          <p>Humidity: ${data.main.humidity}%</p>
+          <p>Wind: ${data.wind.speed} m/s</p>
+        </div>
+      `;
+      weatherContainer.innerHTML = html;
+    }
+
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        fetchWeather(searchInput.value);
+      }
+    });
+  </script>
+</body>
+</html>
